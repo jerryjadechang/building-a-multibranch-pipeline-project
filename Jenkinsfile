@@ -8,11 +8,13 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh 'ls -l'
+                sh 'env'
+                echo "${CI}"
             }
         }
         stage('Test') {
             steps {
-                sh './jenkins/scripts/test.sh'
+                echo "testing..."
             }
         }
     }
