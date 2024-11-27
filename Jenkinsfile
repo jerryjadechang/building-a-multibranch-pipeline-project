@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:22.11.0-alpine3.20' }
+    }
     environment {
         CI = 'true'
     }
@@ -15,6 +17,12 @@ pipeline {
         stage('Test') {
             steps {
                 echo "testing..."
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'uname'
+                sh 'cat /etc/*release*'
             }
         }
     }
